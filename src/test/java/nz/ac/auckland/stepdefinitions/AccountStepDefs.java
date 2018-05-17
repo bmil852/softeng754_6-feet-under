@@ -85,31 +85,42 @@ public class AccountStepDefs {
 	
 	@When("^the User performs (\\d+) searches$")
 	public void the_User_performs_searches(int arg1) throws Exception {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	    User user = _loginService.getUser("test1");
+	    for (int i = 0; i < arg1; i++) {
+	    	user.incrementSearchCount();
+	    }
 	}
 
 	@Then("^the search count for that User is equal to (\\d+)$")
 	public void the_search_count_for_that_User_is_equal_to(int arg1) throws Exception {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+		User user = _loginService.getUser("test1");
+		assertThat(user.getActiveSearchCount(), equalTo(arg1));
 	}
 
 	@Given("^a total of (\\d+) Users are already signed into the system$")
 	public void a_total_of_Users_are_already_signed_into_the_system(int arg1) throws Exception {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+		_loginService = new LoginService();
+		for (int i = 0; i < arg1; i++) {
+			User newUser = new User("test" + i, "pass" + i);
+			_loginService.register(newUser, UserType.USER);
+		    _loginService.signIn(newUser, UserType.USER);
+		}
 	}
 
 	@When("^each user performs (\\d+) searches$")
 	public void each_user_performs_searches(int arg1) throws Exception {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	    for (String username : _loginService.getActive(UserType.USER)) {
+	    	User user = _loginService.getUser(username);
+	    	for (int i = 0; i < arg1; i++) {
+	    		user.incrementSearchCount();
+	    	}
+	    }
+	    
 	}
 
 	@Then("^the total search count for all Users is equal to (\\d+)$")
 	public void the_total_search_count_for_all_Users_is_equal_to(int arg1) throws Exception {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	    assertThat(_loginService.getTotalSearchCount(), equalTo(arg1));
 	}
+	
 }
