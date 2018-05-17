@@ -12,36 +12,36 @@ import java.util.Map;
  */
 public class LoginService {
 	
-	private Map<UserType,List<Credentials>> _registered;
-	private Map<UserType,List<Credentials>> _active;
+	private Map<UserType,List<User>> _registered;
+	private Map<UserType,List<User>> _active;
 	
 	public LoginService() {
-		_registered = new HashMap<UserType,List<Credentials>>();
-		_active = new HashMap<UserType,List<Credentials>>();
+		_registered = new HashMap<UserType,List<User>>();
+		_active = new HashMap<UserType,List<User>>();
 		
-		_registered.put(UserType.USER, new ArrayList<Credentials>());
-		_registered.put(UserType.ADMINISTRATOR, new ArrayList<Credentials>());
-		_active.put(UserType.USER, new ArrayList<Credentials>());
-		_active.put(UserType.ADMINISTRATOR, new ArrayList<Credentials>());
+		_registered.put(UserType.USER, new ArrayList<User>());
+		_registered.put(UserType.ADMINISTRATOR, new ArrayList<User>());
+		_active.put(UserType.USER, new ArrayList<User>());
+		_active.put(UserType.ADMINISTRATOR, new ArrayList<User>());
 	}
 	
-	public void register(Credentials credentials, UserType userType) {
+	public void register(User credentials, UserType userType) {
 		if (credentials.getUsername() != null && credentials.getPassword() != null) {
 			_registered.get(userType).add(credentials);
 		}
 	}
 	
-	public void signIn(Credentials credentials, UserType userType) {
-		for (Credentials c : _registered.get(userType)) {
+	public void signIn(User credentials, UserType userType) {
+		for (User c : _registered.get(userType)) {
 			if (c.getUsername().equals(credentials.getUsername()) && c.getPassword().equals(credentials.getPassword())) {
 				_active.get(userType).add(c);
 			}
 		}
 	}
 	
-	public void signOut(Credentials credentials, UserType userType) {
-		Credentials removeMe = null;
-		for (Credentials c : _active.get(userType)) {
+	public void signOut(User credentials, UserType userType) {
+		User removeMe = null;
+		for (User c : _active.get(userType)) {
 			if (c.getUsername().equals(credentials.getUsername()) && c.getPassword().equals(credentials.getPassword())) {
 				removeMe = c;
 				break;
@@ -54,7 +54,7 @@ public class LoginService {
 	
 	public List<String> getActive(UserType userType) {
 		List<String> returnList = new ArrayList<String>();
-		for (Credentials c : _active.get(userType)) {
+		for (User c : _active.get(userType)) {
 			returnList.add(c.getUsername());
 		}
 		return returnList;
@@ -62,7 +62,7 @@ public class LoginService {
 	
 	public List<String> getRegistered(UserType userType) {
 		List<String> returnList = new ArrayList<String>();
-		for (Credentials c : _registered.get(userType)) {
+		for (User c : _registered.get(userType)) {
 			returnList.add(c.getUsername());
 		}
 		return returnList;

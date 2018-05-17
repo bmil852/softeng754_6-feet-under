@@ -3,7 +3,7 @@ package nz.ac.auckland.stepdefinitions;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import nz.ac.auckland.accountmanagement.Credentials;
+import nz.ac.auckland.accountmanagement.User;
 import nz.ac.auckland.accountmanagement.LoginService;
 import nz.ac.auckland.accountmanagement.UserType;
 import static org.junit.Assert.assertThat;
@@ -22,7 +22,7 @@ public class LoginStepDefs {
 	public void the_User_or_Administrator_provides_valid_or_invalid_details_for_signing_up(String roleType, String validity) throws Exception {
 	    String username = (validity.equals("valid")) ? "JohnSmith1" : null;
 	    String password = (validity.equals("valid")) ? "pass1" : null;
-	    Credentials credentials = new Credentials(username, password);
+	    User credentials = new User(username, password);
 	    UserType userType = (roleType.equals("User")) ? UserType.USER : UserType.ADMINISTRATOR;
 	    _loginService.register(credentials, userType);
 	}
@@ -39,7 +39,7 @@ public class LoginStepDefs {
 		_loginService = new LoginService();
 		UserType userType = (roleType.contains("User")) ? UserType.USER : UserType.ADMINISTRATOR;
 		String username = (roleType.contains("User")) ? "User1" : "Admin1";
-		Credentials credentials = new Credentials(username, "pass1");
+		User credentials = new User(username, "pass1");
 		_loginService.register(credentials, userType);
 	}
 
@@ -48,7 +48,7 @@ public class LoginStepDefs {
 	    String password = (validity.equals("valid")) ? "pass1" : "anIncorrectPassword88";
 	    String username = (roleType.equals("User")) ? "User1" : "Admin1";
 	    UserType userType = (roleType.equals("User")) ? UserType.USER : UserType.ADMINISTRATOR;
-	    Credentials credentials = new Credentials(username, password);
+	    User credentials = new User(username, password);
 	    _loginService.signIn(credentials, userType);
 	}
 
@@ -64,7 +64,7 @@ public class LoginStepDefs {
 	public void a_User_or_Administrator_is_already_signed_into_the_system(String roleType) throws Exception {
 		_loginService = new LoginService();
 		UserType userType = (roleType.contains("User")) ? UserType.USER : UserType.ADMINISTRATOR;
-	    Credentials credentials = new Credentials("test1", "pass1");
+	    User credentials = new User("test1", "pass1");
 	    _loginService.register(credentials, userType);
 	    _loginService.signIn(credentials, userType);
 	}
@@ -72,7 +72,7 @@ public class LoginStepDefs {
 	@When("^the (User|Administrator) signs out of the system$")
 	public void the_User_or_Administrator_signs_out_of_the_system(String roleType) throws Exception {
 		UserType userType = (roleType.contains("User")) ? UserType.USER : UserType.ADMINISTRATOR;
-		Credentials credentials = new Credentials("test1", "pass1");
+		User credentials = new User("test1", "pass1");
 		_loginService.signOut(credentials, userType);
 	}
 

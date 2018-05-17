@@ -5,12 +5,12 @@ package nz.ac.auckland.accountmanagement;
  * @author Brad
  *
  */
-public class Credentials {
+public class User {
 
 	private String _username;
 	private String _password;
 	
-	public Credentials(String username, String password) {
+	public User(String username, String password) {
 		_username = username;
 		_password = password;
 	}
