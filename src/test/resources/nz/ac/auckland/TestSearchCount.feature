@@ -18,5 +18,6 @@ and the total count of searches should be recorded.
 	Then the total search count for all Users is equal to 10
 	
 	Scenario: Signing out of the system resets the active search count of the User
-	Given the User signs out of the system
+	Given a User is already signed into the system
+	When the User signs out of the system
 	Then the search count for that User is equal to 0

@@ -48,6 +48,7 @@ public class LoginService {
 			}
 		}
 		if (removeMe != null) {
+			removeMe.clearActiveSearchCount();
 			_active.get(userType).remove(removeMe);
 		}
 	}
@@ -66,5 +67,22 @@ public class LoginService {
 			returnList.add(c.getUsername());
 		}
 		return returnList;
+	}
+	
+	public User getUser(String name) {
+		for (User c : _registered.get(UserType.USER)) {
+			if (c.getUsername().equals(name)) {
+				return c;
+			}
+		}
+		return null;
+	}
+	
+	public int getTotalSearchCount() {
+		int returnVal = 0;
+		for (User c : _registered.get(UserType.USER)) {
+			returnVal += c.getActiveSearchCount();
+		}
+		return returnVal;
 	}
 }
