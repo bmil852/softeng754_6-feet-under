@@ -85,4 +85,8 @@ public class LoginService {
 		}
 		return returnVal;
 	}
+	
+	public void refreshRegisteredUserCount() {
+		//Don't need to do anything right now as no concurrency issues to deal with
+	}
 }
