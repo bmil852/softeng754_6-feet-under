@@ -7,58 +7,72 @@ import cucumber.api.java.en.When;
 
 public class LoginStepDefs {
 	
+	private LoginService _loginService;
+	
 	@Given("^a new (?:User|Administrator) wants to sign up to the system$")
 	public void a_new_User_or_Administrator_wants_to_sign_up_to_the_system() throws Exception {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	    _loginService = new LoginService();
 	}
 
 	@When("^the (User|Administrator) provides (valid|invalid) details for signing up$")
 	public void the_User_or_Administrator_provides_valid_or_invalid_details_for_signing_up(String roleType, String validity) throws Exception {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	    String username = (validity.equals("valid")) ? "JohnSmith1" : null;
+	    String password = (validity.equals("valid")) ? "pass1" : null;
+	    Credentials credentials = new Credentials(username, password);
+	    UserType userType = (roleType.equals("User")) ? USER : ADMINISTRATOR;
+	    _loginService.register(credentials, userType);
 	}
 
 	@Then("^the (User|Administrator) (is|is not) succesfully registered with the system$")
 	public void the_User_or_Administrator_is_or_is_not_succesfully_registered_with_the_system(String roleType, String success) throws Exception {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	    boolean registered = (success.equals("is"));
+	    UserType userType = (roleType.equals("User")) ? USER : ADMINISTRATOR;
+	    assertThat((_loginService.getRegistered(userType), contains("JohnSmith1")), is(registered));
 	}
 
 	@Given("^(a User|an Administrator) exists in the system$")
 	public void a_User_or_Administrator_exists_in_the_system(String roleType) throws Exception {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+		UserType userType = (roleType.contains("User")) ? USER : ADMINISTRATOR;
+		String username = (roleType.contains("User")) ? "User1" : "Admin1";
+		Credentials credentials = new Credentials(username, "pass1");
+		_loginService.register(credentials, userType);
 	}
 
 	@When("^the (User|Administrator) provides (valid|invalid) details for signing in$")
 	public void the_User_or_Administrator_provides_valid_or_invalid_details_for_signing_in(String roleType, String validity) throws Exception {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	    String password = (validity.equals("valid")) ? "pass1" : "anIncorrectPassword88";
+	    String username = (roleType.equals("User")) ? "User1" : "Admin1";
+	    UserType userType = (roleType.equals("User")) ? USER : ADMINISTRATOR;
+	    Credentials credentials = new Credentials(username, password);
+	    _loginService.signIn(credentials, userType);
 	}
 
 	@Then("^the (User|Administrator) (is|is not) succesfully signed in$")
 	public void the_User_or_Administrator_is_or_is_not_succesfully_signed_in(String roleType, String success) throws Exception {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	    boolean signedIn = (success.equals("is"));
+	    String username = (roleType.equals("User")) ? "User1" : "Admin1";
+	    UserType userType = (roleType.equals("User")) ? USER : ADMINISTRATOR;
+	    assertThat((_loginService.getActive(userType), contains(username)), is(signedIn));
 	}
 
 	@Given("^(a User|an Administrator) is already signed into the system$")
 	public void a_User_or_Administrator_is_already_signed_into_the_system(String roleType) throws Exception {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+		UserType userType = (roleType.contains("User")) ? USER : ADMINISTRATOR;
+	    Credentials credentials = new Credentials("test1", "pass1");
+	    _loginService.register(credentials, userType);
+	    _loginService.signIn(credentials, userType);
 	}
 
 	@When("^the (User|Administrator) signs out of the system$")
 	public void the_User_or_Administrator_signs_out_of_the_system(String roleType) throws Exception {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+		UserType userType = (roleType.contains("User")) ? USER : ADMINISTRATOR;
+		_loginService.signOut("test1", userType);
 	}
 
 	@Then("^the (User|Administrator) is no longer signed in to the system$")
-	public void the_User_or_Administrator_is_no_longer_signed_in_to_the_system() throws Exception {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	public void the_User_or_Administrator_is_no_longer_signed_in_to_the_system(String roleType) throws Exception {
+		UserType userType = (roleType.contains("User")) ? USER : ADMINISTRATOR;
+		assertThat((_loginService.getActive(userType), contains("test1")), is(false));
 	}
 	
 }
