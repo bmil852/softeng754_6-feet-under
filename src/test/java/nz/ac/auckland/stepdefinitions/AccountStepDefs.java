@@ -1,5 +1,6 @@
 package nz.ac.auckland.stepdefinitions;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -9,7 +10,7 @@ import nz.ac.auckland.accountmanagement.UserType;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.CoreMatchers.equalTo;
 
-public class LoginStepDefs {
+public class AccountStepDefs {
 	
 	private LoginService _loginService;
 	
@@ -82,4 +83,33 @@ public class LoginStepDefs {
 		assertThat(_loginService.getActive(userType).contains("test1"), equalTo(false));
 	}
 	
+	@When("^the User performs (\\d+) searches$")
+	public void the_User_performs_searches(int arg1) throws Exception {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@Then("^the search count for that User is equal to (\\d+)$")
+	public void the_search_count_for_that_User_is_equal_to(int arg1) throws Exception {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@Given("^a total of (\\d+) Users are already signed into the system$")
+	public void a_total_of_Users_are_already_signed_into_the_system(int arg1) throws Exception {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@When("^each user performs (\\d+) searches$")
+	public void each_user_performs_searches(int arg1) throws Exception {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@Then("^the total search count for all Users is equal to (\\d+)$")
+	public void the_total_search_count_for_all_Users_is_equal_to(int arg1) throws Exception {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
 }
