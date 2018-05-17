@@ -1,5 +1,6 @@
 package nz.ac.auckland.stepdefinitions;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -122,4 +123,20 @@ public class AccountStepDefs {
 	    assertThat(_loginService.getTotalSearchCount(), equalTo(arg1));
 	}
 	
+	@When("^the Administrator wants to know how many users are in the system$")
+	public void the_Administrator_wants_to_know_how_many_users_are_in_the_system() throws Exception {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@Then("^the total number of users returned is (\\d+)$")
+	public void the_total_number_of_users_returned_is(int arg1) throws Exception {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	public void no_users_are_yet_registered_with_the_system() throws Exception {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
 }
