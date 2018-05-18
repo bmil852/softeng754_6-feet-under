@@ -45,8 +45,7 @@ public class MarketComprehensionStepDefs {
 	
 	@Then("^the set of documents returned will be clustered into a few categories$")
 	public void the_set_of_documents_returned_will_be_clustered_into_a_few_categories() throws Exception {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	    assertThat(_marketService.getResultCategories().size() > 0, equalTo(true));
 	}
 	
 	private void initializeMarketServiceWithMockAPICommunicator() {
