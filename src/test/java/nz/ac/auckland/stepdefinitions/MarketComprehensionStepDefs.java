@@ -45,14 +45,16 @@ public class MarketComprehensionStepDefs {
 	
 	@Then("^there will be a label for each category in the results$")
 	public void there_will_be_a_label_for_each_category_in_the_results() throws Exception {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	    for (Category c : _marketService.getResultCategories()) {
+	    	assertThat(c.getLabel(), not(equalTo(null)));
+	    }
 	}
 
-	@Then("^the label will be concise$")
+	@Then("^the label for each category will be concise$")
 	public void the_label_will_be_concise() throws Exception {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+		for (Category c : _marketService.getResultCategories()) {
+	    	assertThat(c.getLabel().size() < 140, equalTo(true));
+	    }
 	}
 	
 	private void initializeMarketServiceWithMockAPICommunicator() {
