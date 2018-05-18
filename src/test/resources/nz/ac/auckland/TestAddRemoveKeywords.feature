@@ -9,13 +9,12 @@ Users can inject or remove keywords from the keyword list.
 	Scenario: User tries to add an invalid (empty) keyword to the keyword list
 	Given a User already has a number of keywords returned
 	When the User requests to add the keyword "" to the list
-	Then the keyword is not added to the list
+	Then the total number of keywords is unchanged
 	
 	Scenario: User tries to remove an existing keyword from the list
 	Given a User already has a number of keywords returned
 	When the User tries to remove keyword 1 from the list
-	Then keyword 1 is removed from the list
-	And all the keywords except keyword 1 remain in the list
+	Then all the keywords except keyword 1 remain in the list
 	
 	Scenario: User tries to remove a non existing keyword from the list
 	Given a User already has a number of keywords returned

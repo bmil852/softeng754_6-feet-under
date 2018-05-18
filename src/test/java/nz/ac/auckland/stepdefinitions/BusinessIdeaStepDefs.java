@@ -3,7 +3,6 @@ package nz.ac.auckland.stepdefinitions;
 import java.util.ArrayList;
 import java.util.List;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -101,44 +100,42 @@ public class BusinessIdeaStepDefs {
 	
 	@When("^the User requests to add the keyword \"([^\"]*)\" to the list$")
 	public void the_User_requests_to_add_the_keyword_to_the_list(String arg1) throws Exception {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	    _businessService.addKeyword(arg1, 1);
 	}
 
 	@Then("^the keyword list contains the keyword \"([^\"]*)\"$")
 	public void the_keyword_list_contains_the_keyword(String arg1) throws Exception {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
-	}
-
-	@Then("^the keyword is not added to the list$")
-	public void the_keyword_is_not_added_to_the_list() throws Exception {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+		boolean found = false;
+		List<Keyword> newKeywords = _businessService.getKeywords();
+		for (Keyword k : newKeywords) {
+			if (k.getWord().equals(arg1)) {
+				found = true;
+			}
+		}
+		assertThat(found, equalTo(true));
 	}
 
 	@When("^the User tries to remove keyword (\\d+) from the list$")
 	public void the_User_tries_to_remove_keyword_from_the_list(int arg1) throws Exception {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
-	}
-
-	@Then("^keyword (\\d+) is removed from the list$")
-	public void keyword_is_removed_from_the_list(int arg1) throws Exception {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	    _businessService.removeKeyword(arg1);
 	}
 
 	@Then("^all the keywords except keyword (\\d+) remain in the list$")
 	public void all_the_keywords_except_keyword_remain_in_the_list(int arg1) throws Exception {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+		List<Keyword> newKeywords = _businessService.getKeywords();
+		Keyword removedWord = _previousKeywords.get(arg1-1);
+		for (Keyword k : _previousKeywords) {
+			if (!(k.equals(removedWord))) {
+				assertThat(newKeywords.contains(k), equalTo(true));
+			}
+		}
+		assertThat(newKeywords.contains(removedWord), equalTo(false));
 	}
 
 	@When("^the User tries to remove a keyword from the list that does not exist$")
 	public void the_User_tries_to_remove_a_keyword_from_the_list_that_does_not_exist() throws Exception {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	    int invalidIndex = _businessService.getKeywords().size() + 1;
+	    _businessService.removeKeyword(invalidIndex);
 	}
 	
 	private void initializeBusinessServiceWithMockKeywordExtractor() {
