@@ -1,7 +1,7 @@
 package nz.ac.auckland.marketcomprehension;
 
 import java.util.List;
-import nz.ac.auckland.businessidea.Keyword;
+import nz.ac.auckland.keywordextraction.Keyword;
 
 public interface APICommunicator {
 

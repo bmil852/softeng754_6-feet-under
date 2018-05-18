@@ -1,4 +1,4 @@
-package nz.ac.auckland.businessidea;
+package nz.ac.auckland.keywordextraction;
 
 import java.util.Collections;
 import java.util.List;

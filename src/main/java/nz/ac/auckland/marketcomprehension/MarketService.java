@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import nz.ac.auckland.businessidea.Keyword;
+import nz.ac.auckland.keywordextraction.Keyword;
 
 public class MarketService {
 

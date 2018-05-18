@@ -13,7 +13,7 @@ import java.util.List;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import nz.ac.auckland.businessidea.Keyword;
+import nz.ac.auckland.keywordextraction.Keyword;
 import nz.ac.auckland.marketcomprehension.APICommunicator;
 import nz.ac.auckland.marketcomprehension.Category;
 import nz.ac.auckland.marketcomprehension.Document;
