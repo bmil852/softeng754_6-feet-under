@@ -3,12 +3,12 @@ package nz.ac.auckland.businessidea;
 import java.util.Collections;
 import java.util.List;
 
-public class BusinessIdeaService {
+public class KeywordService {
 
 	private KeywordExtractor _keywordExtractor;
 	private List<Keyword> _keywords;
 	
-	public BusinessIdeaService(KeywordExtractor extractor) {
+	public KeywordService(KeywordExtractor extractor) {
 		_keywordExtractor = extractor;
 	}
 	
