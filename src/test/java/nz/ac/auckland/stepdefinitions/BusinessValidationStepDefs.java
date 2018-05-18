@@ -3,6 +3,7 @@ package nz.ac.auckland.stepdefinitions;
 import java.util.ArrayList;
 import java.util.List;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -54,6 +55,16 @@ public class BusinessValidationStepDefs {
 	public void an_additional_fourth_category_with_no_documents_exists() {
 		Category c4 = new Category("C4");
 		_businessValidationService.addCategory(c4);
+	}
+	
+	@When("^the user sets the relevance of category (\\d+) to \"([^\"]*)\"$")
+	public void the_user_sets_the_relevance_of_category_to(int arg1, String arg2) {
+	    throw new PendingException();
+	}
+
+	@Then("^the relevance of category (\\d+) will be equal to \"([^\"]*)\"$")
+	public void the_relevance_of_category_will_be_equal_to(int arg1, String arg2) {
+		throw new PendingException();
 	}
 	
 }
