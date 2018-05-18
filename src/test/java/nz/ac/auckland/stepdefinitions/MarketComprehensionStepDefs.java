@@ -3,6 +3,7 @@ package nz.ac.auckland.stepdefinitions;
 import java.util.ArrayList;
 import java.util.List;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -40,6 +41,12 @@ public class MarketComprehensionStepDefs {
 	@Then("^a non-empty set of documents will be returned$")
 	public void a_non_empty_set_of_documents_will_be_returned() throws Exception {
 	    assertThat(_marketService.getSearchResults().size() > 0, equalTo(true));
+	}
+	
+	@Then("^the set of documents returned will be clustered into a few categories$")
+	public void the_set_of_documents_returned_will_be_clustered_into_a_few_categories() throws Exception {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
 	}
 	
 	private void initializeMarketServiceWithMockAPICommunicator() {
