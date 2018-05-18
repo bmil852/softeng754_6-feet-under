@@ -14,14 +14,14 @@ import static org.mockito.Mockito.when;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.CoreMatchers.equalTo;
 
-public class BusinessIdeaStepDefs {
+public class KeywordExtractionStepDefs {
 	
 	private KeywordService _keywordService;
 	List<Keyword> _previousKeywords;
 	
 	@Given("^the User wants to input their business idea to the system$")
 	public void the_User_wants_to_input_their_business_idea_to_the_system() throws Exception {
-		initializeBusinessServiceWithMockKeywordExtractor();
+		initializeKeywordServiceWithMockKeywordExtractor();
 	}
 
 	@When("^the User enters their business idea as \"([^\"]*)\"$")
@@ -37,7 +37,7 @@ public class BusinessIdeaStepDefs {
 	
 	@Given("^a User already has a number of keywords returned$")
 	public void a_User_already_has_a_number_of_keywords_returned() throws Exception {
-		initializeBusinessServiceWithMockKeywordExtractor();
+		initializeKeywordServiceWithMockKeywordExtractor();
 		_keywordService.extractFrom("A dog walking service in Ponsonby");
 		List<Keyword> extractedKeywords = _keywordService.getKeywords();
 		_previousKeywords = new ArrayList<Keyword>();
@@ -138,7 +138,7 @@ public class BusinessIdeaStepDefs {
 	    _keywordService.removeKeyword(invalidIndex);
 	}
 	
-	private void initializeBusinessServiceWithMockKeywordExtractor() {
+	private void initializeKeywordServiceWithMockKeywordExtractor() {
 		List<Keyword> extractedKeywordsPopulated = new ArrayList<Keyword>();
 	    extractedKeywordsPopulated.add(new Keyword("Dog", 3));
 	    extractedKeywordsPopulated.add(new Keyword("Walking", 4));
