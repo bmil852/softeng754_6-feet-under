@@ -9,6 +9,7 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -40,6 +41,18 @@ public class MarketComprehensionStepDefs {
 	@Then("^the set of documents returned will be clustered into a few categories$")
 	public void the_set_of_documents_returned_will_be_clustered_into_a_few_categories() throws Exception {
 	    assertThat(_marketService.getResultCategories().size() > 0, equalTo(true));
+	}
+	
+	@Then("^there will be a label for each category in the results$")
+	public void there_will_be_a_label_for_each_category_in_the_results() throws Exception {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@Then("^the label will be concise$")
+	public void the_label_will_be_concise() throws Exception {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
 	}
 	
 	private void initializeMarketServiceWithMockAPICommunicator() {
