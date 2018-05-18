@@ -3,10 +3,10 @@ package nz.ac.auckland.stepdefinitions;
 import java.util.ArrayList;
 import java.util.List;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import nz.ac.auckland.businessidea.BusinessIdeaService;
 import nz.ac.auckland.businessidea.Keyword;
 import nz.ac.auckland.businessidea.KeywordExtractor;
 import static org.mockito.Mockito.mock;
@@ -40,6 +40,7 @@ public class BusinessIdeaStepDefs {
 		initializeBusinessServiceWithMockKeywordExtractor();
 		_businessService.extractFrom("A dog walking service in Ponsonby");
 		List<Keyword> extractedKeywords = _businessService.getKeywords();
+		_previousKeywords = new ArrayList<Keyword>();
 		for (Keyword k : extractedKeywords) {
 			_previousKeywords.add(k);
 		}
@@ -47,19 +48,19 @@ public class BusinessIdeaStepDefs {
 
 	@When("^the User requests to change the weight of keyword (\\d+) to (\\d+)$")
 	public void the_User_requests_to_change_the_weight_of_keyword_to(int arg1, int arg2) throws Exception {
-	    _businessService.updateWeight(int keyword, int newWeight);
+	    _businessService.updateWeight(arg1, arg2);
 	}
 
 	@Then("^the weight of keyword (\\d+) (is|is not) updated to (\\d+)$")
 	public void the_weight_of_keyword_is_updated_to(int arg1, String success, int arg2) throws Exception {
 	    boolean isUpdated = success.equals("is");
-	    assertThat(_businessService.getKeywords().get(arg1).getWeight(), equalTo(arg2));
+	    assertThat(_businessService.getKeywords().get(arg1-1).getWeight() == arg2, equalTo(isUpdated));
 	}
 
 	@When("^the User requests to change the weight of all keywords to (\\d+)$")
 	public void the_User_requests_to_change_the_weight_of_all_keywords_to(int arg1) throws Exception {
 	    int keywordsTotal = _businessService.getKeywords().size();
-	    for (int i = 0; i < keywordsTotal; i++) {
+	    for (int i = 1; i <= keywordsTotal; i++) {
 	    	_businessService.updateWeight(i, arg1);
 	    }
 	}
@@ -80,7 +81,7 @@ public class BusinessIdeaStepDefs {
 	@Then("^the keyword that was in position (\\d+) is now in position (\\d+)$")
 	public void the_keyword_that_was_in_position_is_now_in_position(int arg1, int arg2) throws Exception {
 		List<Keyword> newKeywords = _businessService.getKeywords();
-	    assertThat(_previousKeywords.get(arg1), equalTo(newKeywords.get(arg2)));
+	    assertThat(_previousKeywords.get(arg1-1), equalTo(newKeywords.get(arg2-1)));
 	}
 
 	@Then("^the total number of keywords is unchanged$")
@@ -97,7 +98,7 @@ public class BusinessIdeaStepDefs {
 		}
 	}
 	
-	private void intializeBusinessServiceWithMockKeywordExtractor() {
+	private void initializeBusinessServiceWithMockKeywordExtractor() {
 		List<Keyword> extractedKeywordsPopulated = new ArrayList<Keyword>();
 	    extractedKeywordsPopulated.add(new Keyword("Dog", 3));
 	    extractedKeywordsPopulated.add(new Keyword("Walking", 4));

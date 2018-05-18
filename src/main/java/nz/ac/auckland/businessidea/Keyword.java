@@ -3,9 +3,9 @@ package nz.ac.auckland.businessidea;
 public class Keyword {
 
 	private String _word;
-	private double _weight;
+	private int _weight;
 	
-	public Keyword(String word, double weight) {
+	public Keyword(String word, int weight) {
 		_word = word;
 		_weight = weight;
 	}
@@ -14,11 +14,11 @@ public class Keyword {
 		return _word;
 	}
 	
-	public double getWeight() {
+	public int getWeight() {
 		return _weight;
 	}
 	
-	public void updateWeight(double newWeight) {
+	public void updateWeight(int newWeight) {
 		_weight = newWeight;
 	}
 }
