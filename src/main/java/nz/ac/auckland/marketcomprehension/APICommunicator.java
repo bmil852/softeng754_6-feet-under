@@ -5,5 +5,5 @@ import nz.ac.auckland.businessidea.Keyword;
 
 public interface APICommunicator {
 
-	List<Document> callAllAPIs(List<Keyword> weightedKeywords);
+	List<Document> searchAndCategorize(List<Keyword> weightedKeywords);
 }
