@@ -3,6 +3,7 @@ package nz.ac.auckland.stepdefinitions;
 import java.util.ArrayList;
 import java.util.List;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -59,14 +60,19 @@ public class BusinessValidationStepDefs {
 		_businessValidationService.addCategory(c4);
 	}
 	
-	@When("^the user sets the relevance of category (\\d+) to \"([^\"]*)\"$")
+	@When("^the user sets the relevance of category (\\d+) to (.*)$")
 	public void the_user_sets_the_relevance_of_category_to(int arg1, String arg2) {
 		_businessValidationService.setRelevance(arg1, Relevance.valueOf(arg2));
 	}
 
-	@Then("^the relevance of category (\\d+) will be equal to \"([^\"]*)\"$")
+	@Then("^the relevance of category (\\d+) will be equal to (.*)$")
 	public void the_relevance_of_category_will_be_equal_to(int arg1, String arg2) {
 		assertThat(_businessValidationService.getRelevance(arg1), equalTo(Relevance.valueOf(arg2)));
 	}
 	
+	@Then("^the overall maturity for the business idea will be (\\d+)\\.(\\d+)$")
+	public void the_overall_maturity_for_the_business_idea_will_be(int arg1, int arg2) throws Exception {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
 }
