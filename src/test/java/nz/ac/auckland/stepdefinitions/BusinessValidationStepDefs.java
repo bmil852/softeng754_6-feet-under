@@ -59,12 +59,12 @@ public class BusinessValidationStepDefs {
 	
 	@When("^the user sets the relevance of category (\\d+) to \"([^\"]*)\"$")
 	public void the_user_sets_the_relevance_of_category_to(int arg1, String arg2) {
-	    throw new PendingException();
+		_businessValidationService.setRelevance(arg1, Relevance.valueof(arg2));
 	}
 
 	@Then("^the relevance of category (\\d+) will be equal to \"([^\"]*)\"$")
 	public void the_relevance_of_category_will_be_equal_to(int arg1, String arg2) {
-		throw new PendingException();
+		assertThat(_businessValidationService.getRelevance(arg1), equalTo(Relevance.valueOf(arg2)));
 	}
 	
 }
