@@ -1,4 +1,4 @@
-Feature: Market Comprehension
+Feature: Market Comprehension - Search Results are Returned
 The weighted keywords should be used as the input to a traditional search engine, 
 and a set of documents are expected to be returned.
 

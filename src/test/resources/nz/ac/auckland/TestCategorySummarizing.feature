@@ -1,4 +1,4 @@
-Feature: Market Comprehension
+Feature: Market Comprehension - Categories have Summaries
 
 	Scenario: A user wants a summary of each category in the search results
 	Given a User has a set of weighted keywords to search for

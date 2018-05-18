@@ -1,4 +1,4 @@
-Feature: Business Idea Keyword Extraction
+Feature: Business Idea Keyword Extraction - Add and Remove Keywords
 Users can inject or remove keywords from the keyword list.
 
 	Scenario: User adds a valid keyword to the keyword list

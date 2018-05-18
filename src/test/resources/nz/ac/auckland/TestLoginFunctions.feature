@@ -1,4 +1,4 @@
-Feature: Account Management
+Feature: Account Management - Login Functions
 Two types of roles - Users and Administrators - can sign up, in, and off.
 
 	Scenario: A User signs up to the system with valid details

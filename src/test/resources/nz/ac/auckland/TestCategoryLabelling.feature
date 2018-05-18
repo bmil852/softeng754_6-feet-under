@@ -1,4 +1,4 @@
-Feature: Market Comprehension
+Feature: Market Comprehension - Categories have Labels
 A few keywords should be extracted from the associated documents of a category in order
 to form a concise and informative label for the category.
 

@@ -1,4 +1,4 @@
-Feature: Business Idea Keyword Extraction
+Feature: Business Idea Keyword Extraction - Keyword Extraction
 Users input their business idea in the form of text, and the application can extract a few
 keywords from the input text.
 

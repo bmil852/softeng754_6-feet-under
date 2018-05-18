@@ -1,4 +1,4 @@
-Feature: Business Idea Keyword Extraction
+Feature: Business Idea Keyword Extraction - Keyword Prioritisation
 Users can prioritise the keywords by changing the weights or order of the keywords.
 
 	Scenario: User changes the weight of a keyword

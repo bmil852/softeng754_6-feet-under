@@ -1,4 +1,4 @@
-Feature: Account Management
+Feature: Account Management - Search Count Tracking
 The count of searches that have been performed by a user so far in the current session
 and the total count of searches should be recorded.
 

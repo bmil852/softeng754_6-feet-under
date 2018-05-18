@@ -1,4 +1,4 @@
-Feature: Account Management
+Feature: Account Management - User Registration Tracking
 Administrators need to know how many users have registered.
 
 	Scenario: One user is registered with the system

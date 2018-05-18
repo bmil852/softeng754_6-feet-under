@@ -1,4 +1,4 @@
-Feature: Market Comprehension
+Feature: Market Comprehension - Search Results are Clustered
 The returned documents should be clustered into a few categories.
 
 	Scenario: A user would like search results to be clustered into categories
