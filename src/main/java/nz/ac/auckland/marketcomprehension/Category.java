@@ -9,6 +9,7 @@ public class Category {
 	private String _label;
 	private String _summary;
 	private List<Document> _documents;
+	private double _popularity;
 	
 	public Category(String categoryName) {
 		_categoryName = categoryName;
@@ -41,5 +42,13 @@ public class Category {
 	
 	public List<Document> getCategoryDocuments() {
 		return _documents;
+	}
+	
+	public void updatePopularity(double newPopularity) {
+		_popularity = newPopularity;
+	}
+	
+	public double getPopularity() {
+		return _popularity;
 	}
 }

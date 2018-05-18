@@ -3,12 +3,13 @@ package nz.ac.auckland.stepdefinitions;
 import java.util.ArrayList;
 import java.util.List;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import nz.ac.auckland.businessvalidation.BusinessValidationService;
 import nz.ac.auckland.marketcomprehension.Category;
 import nz.ac.auckland.marketcomprehension.Document;
+import static org.junit.Assert.assertTrue;
 
 public class BusinessValidationStepDefs {
 
@@ -32,6 +33,10 @@ public class BusinessValidationStepDefs {
 				c3.addDocument(d);
 			}
 		}
+		categories.add(c1);
+		categories.add(c2);
+		categories.add(c3);
+		
 		_businessValidationService = new BusinessValidationService(categories);
 	}
 
@@ -42,7 +47,7 @@ public class BusinessValidationStepDefs {
 
 	@Then("^category (\\d+) should have a popularity of (\\d+) percent$")
 	public void category_should_have_a_popularity_of_percent(int arg1, int arg2) {
-	    assertTrue(_businessValidationService.getPopularity(arg1) == arg2/100.0)
+	    assertTrue(_businessValidationService.getPopularity(arg1) == arg2/100.0);
 	}
 
 	@Given("^an additional fourth category with no documents exists$")
