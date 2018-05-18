@@ -28,9 +28,22 @@ public class BusinessIdeaService {
 		}
 	}
 	
-	public void updateWeight(int index, int newWeight) {
+	public void updateWeight(int keyword, int newWeight) {
 		if (newWeight > 0) {
-			_keywords.get(index-1).updateWeight(newWeight);
+			_keywords.get(keyword-1).updateWeight(newWeight);
+		}
+	}
+	
+	public void addKeyword(String newWord, int newWeight) {
+		if (newWord.length() > 0 && newWeight > 0) {
+			_keywords.add(new Keyword(newWord, newWeight));
+		}
+	}
+	
+	public void removeKeyword(int keyword) {
+		int index = keyword-1;
+		if (index >= 0 && index < _keywords.size()) {
+			_keywords.remove(index);
 		}
 	}
 }
