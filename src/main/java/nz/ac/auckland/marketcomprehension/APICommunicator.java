@@ -8,4 +8,6 @@ public interface APICommunicator {
 	List<Document> searchAndCategorize(List<Keyword> weightedKeywords);
 	
 	String labelCategory(List<Document> documentsInCategory);
+	
+	String summarizeCategory(List<Document> documentsInCategory);
 }

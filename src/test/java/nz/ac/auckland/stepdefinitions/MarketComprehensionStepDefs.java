@@ -10,7 +10,6 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -89,6 +88,7 @@ public class MarketComprehensionStepDefs {
 		APICommunicator apiCommunicator = mock(APICommunicator.class);
 		when(apiCommunicator.searchAndCategorize(anyList())).thenReturn(documents);
 		when(apiCommunicator.labelCategory(anyList())).thenReturn("Mock label for a category of documents");
+		when(apiCommunicator.summarizeCategory(anyList())).thenReturn("Mock summary for a category of documents");
 		_marketService = new MarketService(apiCommunicator);
 	}
 	

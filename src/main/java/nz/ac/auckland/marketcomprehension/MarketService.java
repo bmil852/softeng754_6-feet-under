@@ -19,7 +19,9 @@ public class MarketService {
 		_searchResults = _apiCommunicator.searchAndCategorize(weightedKeywords);
 		for (Category c : getResultCategories()) {
 			String label = _apiCommunicator.labelCategory(c.getCategoryDocuments());
+			String summary = _apiCommunicator.summarizeCategory(c.getCategoryDocuments());
 			c.labelCategory(label);
+			c.summarizeCategory(summary);
 		}
 	}
 	
