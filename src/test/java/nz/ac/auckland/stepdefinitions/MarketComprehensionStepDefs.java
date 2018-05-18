@@ -67,25 +67,10 @@ public class MarketComprehensionStepDefs {
 	
 	private void initializeMarketServiceWithMockAPICommunicator() {
 		List<Document> documents = new ArrayList<Document>();
-		Category c1 = new Category("C1");
-		Category c2 = new Category("C2");
-		Category c3 = new Category("C3");
-		for (int i = 0; i < 100; i++) {
-			if (i < 50) {
-				Document d = new Document("Mock text for a document object", c1);
-				documents.add(d);
-				c1.addDocument(d);
-			} else if (i < 80) {
-				Document d = new Document("Mock text for a document object", c2);
-				documents.add(d);
-				c2.addDocument(d);
-			} else {
-				Document d = new Document("Mock text for a document object", c3);
-				documents.add(d);
-				c3.addDocument(d);
-			}
-		}
-		
+		Document d1 = new Document("Mock text for a document object", new Category("C1"));
+		Document d2 = new Document("Mock text for a document object", new Category("C2"));
+		documents.add(d1);
+		documents.add(d2);
 		APICommunicator apiCommunicator = mock(APICommunicator.class);
 		when(apiCommunicator.searchAndCategorize(anyList())).thenReturn(documents);
 		when(apiCommunicator.labelCategory(anyList())).thenReturn("Mock label for a category of documents");
