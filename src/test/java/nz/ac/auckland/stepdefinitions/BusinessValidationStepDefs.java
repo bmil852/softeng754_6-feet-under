@@ -72,7 +72,8 @@ public class BusinessValidationStepDefs {
 	
 	@Then("^the overall maturity for the business idea will be (\\d+)\\.(\\d+)$")
 	public void the_overall_maturity_for_the_business_idea_will_be(int arg1, int arg2) throws Exception {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	    String parseableDouble = arg1 + "." + arg2;
+	    double d = Double.parseDouble(parseableDouble);
+	    assertThat(_businessValidationService.getOverallMaturity(), equalTo(d));
 	}
 }
