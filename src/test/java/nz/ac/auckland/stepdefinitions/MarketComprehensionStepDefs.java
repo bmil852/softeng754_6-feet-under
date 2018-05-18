@@ -10,6 +10,7 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -55,6 +56,12 @@ public class MarketComprehensionStepDefs {
 		for (Category c : _marketService.getResultCategories()) {
 	    	assertThat(c.getLabel().toCharArray().length < 140, equalTo(true));
 	    }
+	}
+	
+	@Then("^each category in the search results will have an associated summary$")
+	public void each_category_in_the_search_results_will_have_an_associated_summary() throws Exception {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
 	}
 	
 	private void initializeMarketServiceWithMockAPICommunicator() {
