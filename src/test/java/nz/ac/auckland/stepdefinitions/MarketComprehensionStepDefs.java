@@ -24,41 +24,41 @@ public class MarketComprehensionStepDefs {
 	private MarketService _marketService;
 	
 	@Given("^a User has a set of weighted keywords to search for$")
-	public void a_User_has_a_set_of_weighted_keywords_to_search_for() throws Exception {
+	public void a_User_has_a_set_of_weighted_keywords_to_search_for() {
 		initializeMarketServiceWithMockAPICommunicator();
 	}
 
 	@When("^the User performs a search$")
-	public void the_User_performs_a_search() throws Exception {
+	public void the_User_performs_a_search() {
 	    _marketService.searchAndProcess(new ArrayList<Keyword>());
 	}
 
 	@Then("^a non-empty set of documents will be returned$")
-	public void a_non_empty_set_of_documents_will_be_returned() throws Exception {
+	public void a_non_empty_set_of_documents_will_be_returned() {
 	    assertThat(_marketService.getSearchResults().size() > 0, equalTo(true));
 	}
 	
 	@Then("^the set of documents returned will be clustered into a few categories$")
-	public void the_set_of_documents_returned_will_be_clustered_into_a_few_categories() throws Exception {
+	public void the_set_of_documents_returned_will_be_clustered_into_a_few_categories() {
 	    assertThat(_marketService.getResultCategories().size() > 0, equalTo(true));
 	}
 	
 	@Then("^there will be a label for each category in the results$")
-	public void there_will_be_a_label_for_each_category_in_the_results() throws Exception {
+	public void there_will_be_a_label_for_each_category_in_the_results() {
 	    for (Category c : _marketService.getResultCategories()) {
 	    	assertThat(c.getLabel(), not(equalTo(null)));
 	    }
 	}
 
 	@Then("^the label for each category will be concise$")
-	public void the_label_will_be_concise() throws Exception {
+	public void the_label_will_be_concise() {
 		for (Category c : _marketService.getResultCategories()) {
 	    	assertThat(c.getLabel().toCharArray().length < 140, equalTo(true));
 	    }
 	}
 	
 	@Then("^each category in the search results will have an associated summary$")
-	public void each_category_in_the_search_results_will_have_an_associated_summary() throws Exception {
+	public void each_category_in_the_search_results_will_have_an_associated_summary() {
 		for (Category c : _marketService.getResultCategories()) {
 	    	assertThat(c.getSummary(), not(equalTo(null)));
 	    }
