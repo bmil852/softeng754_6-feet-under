@@ -38,4 +38,13 @@ public class BusinessValidationService {
 	public Relevance getRelevance(int categoryNumber) {
 		return _categories.get(categoryNumber-1).getRelevance();
 	}
+	
+	public double getOverallMaturity() {
+		calculateCategoryPopularities();
+		double d = 0.0;
+		for (Category c : _categories) {
+			d += (c.getRelevance().ordinal() / 4.0) * c.getPopularity();
+		}
+		return d;
+	}
 }
