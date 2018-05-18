@@ -3,14 +3,16 @@ package nz.ac.auckland.stepdefinitions;
 import java.util.ArrayList;
 import java.util.List;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import nz.ac.auckland.businessvalidation.BusinessValidationService;
+import nz.ac.auckland.businessvalidation.Relevance;
 import nz.ac.auckland.marketcomprehension.Category;
 import nz.ac.auckland.marketcomprehension.Document;
 import static org.junit.Assert.assertTrue;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertThat;
 
 public class BusinessValidationStepDefs {
 
@@ -59,7 +61,7 @@ public class BusinessValidationStepDefs {
 	
 	@When("^the user sets the relevance of category (\\d+) to \"([^\"]*)\"$")
 	public void the_user_sets_the_relevance_of_category_to(int arg1, String arg2) {
-		_businessValidationService.setRelevance(arg1, Relevance.valueof(arg2));
+		_businessValidationService.setRelevance(arg1, Relevance.valueOf(arg2));
 	}
 
 	@Then("^the relevance of category (\\d+) will be equal to \"([^\"]*)\"$")

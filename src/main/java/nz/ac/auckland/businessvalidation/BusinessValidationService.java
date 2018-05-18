@@ -30,4 +30,12 @@ public class BusinessValidationService {
 	public void addCategory(Category c) {
 		_categories.add(c);
 	}
+	
+	public void setRelevance(int categoryNumber, Relevance relevance) {
+		_categories.get(categoryNumber-1).setRelevance(relevance);
+	}
+	
+	public Relevance getRelevance(int categoryNumber) {
+		return _categories.get(categoryNumber-1).getRelevance();
+	}
 }

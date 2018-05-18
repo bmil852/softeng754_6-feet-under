@@ -3,6 +3,8 @@ package nz.ac.auckland.marketcomprehension;
 import java.util.ArrayList;
 import java.util.List;
 
+import nz.ac.auckland.businessvalidation.Relevance;
+
 public class Category {
 
 	private String _categoryName;
@@ -10,6 +12,7 @@ public class Category {
 	private String _summary;
 	private List<Document> _documents;
 	private double _popularity;
+	private Relevance _relevance;
 	
 	public Category(String categoryName) {
 		_categoryName = categoryName;
@@ -50,5 +53,13 @@ public class Category {
 	
 	public double getPopularity() {
 		return _popularity;
+	}
+
+	public Relevance getRelevance() {
+		return _relevance;
+	}
+
+	public void setRelevance(Relevance relevance) {
+		_relevance = relevance;
 	}
 }

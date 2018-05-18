@@ -12,5 +12,5 @@ Users can set the relevance of each category to their ideas
 	| WEAK_RELEVANT |
 	| RELEVANT      |
 	| VERY_RELEVANT |
-	| THE SAME      |
+	| THE_SAME      |
 	
