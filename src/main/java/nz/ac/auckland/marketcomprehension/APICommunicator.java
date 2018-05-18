@@ -6,4 +6,6 @@ import nz.ac.auckland.businessidea.Keyword;
 public interface APICommunicator {
 
 	List<Document> searchAndCategorize(List<Keyword> weightedKeywords);
+	
+	String labelCategory(List<Document> documentsInCategory);
 }

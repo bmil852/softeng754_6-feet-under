@@ -1,6 +1,7 @@
 package nz.ac.auckland.stepdefinitions;
 
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
 import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.Mockito.mock;
@@ -9,7 +10,6 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -30,7 +30,7 @@ public class MarketComprehensionStepDefs {
 
 	@When("^the User performs a search$")
 	public void the_User_performs_a_search() throws Exception {
-	    _marketService.searchAndCategorize(new ArrayList<Keyword>());
+	    _marketService.searchAndProcess(new ArrayList<Keyword>());
 	}
 
 	@Then("^a non-empty set of documents will be returned$")
@@ -53,7 +53,7 @@ public class MarketComprehensionStepDefs {
 	@Then("^the label for each category will be concise$")
 	public void the_label_will_be_concise() throws Exception {
 		for (Category c : _marketService.getResultCategories()) {
-	    	assertThat(c.getLabel().size() < 140, equalTo(true));
+	    	assertThat(c.getLabel().toCharArray().length < 140, equalTo(true));
 	    }
 	}
 	
@@ -64,16 +64,23 @@ public class MarketComprehensionStepDefs {
 		Category c3 = new Category("C3");
 		for (int i = 0; i < 100; i++) {
 			if (i < 50) {
-				documents.add(new Document("Mock text for a document object", c1));
+				Document d = new Document("Mock text for a document object", c1);
+				documents.add(d);
+				c1.addDocument(d);
 			} else if (i < 80) {
-				documents.add(new Document("Mock text for a document object", c2));
+				Document d = new Document("Mock text for a document object", c2);
+				documents.add(d);
+				c2.addDocument(d);
 			} else {
-				documents.add(new Document("Mock text for a document object", c3));
+				Document d = new Document("Mock text for a document object", c3);
+				documents.add(d);
+				c3.addDocument(d);
 			}
 		}
 		
 		APICommunicator apiCommunicator = mock(APICommunicator.class);
 		when(apiCommunicator.searchAndCategorize(anyList())).thenReturn(documents);
+		when(apiCommunicator.labelCategory(anyList())).thenReturn("Mock label for a category of documents");
 		_marketService = new MarketService(apiCommunicator);
 	}
 	

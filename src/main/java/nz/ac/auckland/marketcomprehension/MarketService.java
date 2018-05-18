@@ -15,8 +15,12 @@ public class MarketService {
 		_apiCommunicator = apiCommunicator;
 	}
 	
-	public void searchAndCategorize(List<Keyword> weightedKeywords) {
+	public void searchAndProcess(List<Keyword> weightedKeywords) {
 		_searchResults = _apiCommunicator.searchAndCategorize(weightedKeywords);
+		for (Category c : getResultCategories()) {
+			String label = _apiCommunicator.labelCategory(c.getCategoryDocuments());
+			c.labelCategory(label);
+		}
 	}
 	
 	public List<Document> getSearchResults() {
