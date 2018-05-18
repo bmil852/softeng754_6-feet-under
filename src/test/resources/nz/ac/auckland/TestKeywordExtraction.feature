@@ -9,5 +9,5 @@ keywords from the input text.
 	
 	Scenario: User enters a business idea
 	Given the User wants to input their business idea to the system
-	When the User enters their business idea as "My mock business idea is a dog walking service in Ponsonby"
+	When the User enters their business idea as "A dog walking service in Ponsonby"
 	Then the System will extract a number of keywords from the business idea
