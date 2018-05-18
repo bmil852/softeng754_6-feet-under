@@ -60,8 +60,9 @@ public class MarketComprehensionStepDefs {
 	
 	@Then("^each category in the search results will have an associated summary$")
 	public void each_category_in_the_search_results_will_have_an_associated_summary() throws Exception {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+		for (Category c : _marketService.getResultCategories()) {
+	    	assertThat(c.getSummary(), not(equalTo(null)));
+	    }
 	}
 	
 	private void initializeMarketServiceWithMockAPICommunicator() {
