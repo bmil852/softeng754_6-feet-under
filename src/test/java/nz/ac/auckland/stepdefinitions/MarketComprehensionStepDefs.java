@@ -1,5 +1,11 @@
 package nz.ac.auckland.stepdefinitions;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertThat;
+import static org.mockito.ArgumentMatchers.anyList;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,30 +18,18 @@ import nz.ac.auckland.marketcomprehension.Category;
 import nz.ac.auckland.marketcomprehension.Document;
 import nz.ac.auckland.marketcomprehension.MarketService;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-import static org.mockito.ArgumentMatchers.anyList;
-import static org.junit.Assert.assertThat;
-import static org.hamcrest.CoreMatchers.equalTo;
-
 public class MarketComprehensionStepDefs {
 
-	private List<Keyword> _finalKeywords;
 	private MarketService _marketService;
 	
 	@Given("^a User has a set of weighted keywords to search for$")
 	public void a_User_has_a_set_of_weighted_keywords_to_search_for() throws Exception {
-		List<Keyword> finalKeywords = new ArrayList<Keyword>();
-	    finalKeywords.add(new Keyword("Dog", 3));
-	    finalKeywords.add(new Keyword("Walking", 4));
-	    finalKeywords.add(new Keyword("Ponsonby", 5));
-	    _finalKeywords = finalKeywords;
 		initializeMarketServiceWithMockAPICommunicator();
 	}
 
 	@When("^the User performs a search$")
 	public void the_User_performs_a_search() throws Exception {
-	    _marketService.searchAndCategorize(_finalKeywords);
+	    _marketService.searchAndCategorize(new ArrayList<Keyword>());
 	}
 
 	@Then("^a non-empty set of documents will be returned$")
