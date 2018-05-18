@@ -7,6 +7,7 @@ import nz.ac.auckland.accountmanagement.User;
 import nz.ac.auckland.accountmanagement.LoginService;
 import nz.ac.auckland.accountmanagement.UserType;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertFalse;
 import static org.hamcrest.CoreMatchers.equalTo;
 
 public class AccountStepDefs {
@@ -80,7 +81,7 @@ public class AccountStepDefs {
 	@Then("^the (User|Administrator) is no longer signed in to the system$")
 	public void the_User_or_Administrator_is_no_longer_signed_in_to_the_system(String roleType) {
 		UserType userType = (roleType.contains("User")) ? UserType.USER : UserType.ADMINISTRATOR;
-		assertThat(_loginService.getActive(userType).contains("test1"), equalTo(false));
+		assertFalse(_loginService.getActive(userType).contains("test1"));
 	}
 	
 	@When("^the User performs (\\d+) searches$")

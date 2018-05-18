@@ -3,6 +3,7 @@ package nz.ac.auckland.stepdefinitions;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -40,7 +41,7 @@ public class MarketComprehensionStepDefs {
 	
 	@Then("^the set of documents returned will be clustered into a few categories$")
 	public void the_set_of_documents_returned_will_be_clustered_into_a_few_categories() {
-	    assertThat(_marketService.getResultCategories().size() > 0, equalTo(true));
+	    assertTrue(_marketService.getResultCategories().size() > 0);
 	}
 	
 	@Then("^there will be a label for each category in the results$")
@@ -53,7 +54,7 @@ public class MarketComprehensionStepDefs {
 	@Then("^the label for each category will be concise$")
 	public void the_label_will_be_concise() {
 		for (Category c : _marketService.getResultCategories()) {
-	    	assertThat(c.getLabel().toCharArray().length < 140, equalTo(true));
+	    	assertTrue(c.getLabel().toCharArray().length < 140);
 	    }
 	}
 	

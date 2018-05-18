@@ -12,6 +12,7 @@ import nz.ac.auckland.keywordextraction.KeywordExtractor;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertFalse;
 import static org.hamcrest.CoreMatchers.equalTo;
 
 public class KeywordExtractionStepDefs {
@@ -129,7 +130,7 @@ public class KeywordExtractionStepDefs {
 				assertThat(newKeywords.contains(k), equalTo(true));
 			}
 		}
-		assertThat(newKeywords.contains(removedWord), equalTo(false));
+		assertFalse(newKeywords.contains(removedWord));
 	}
 
 	@When("^the User tries to remove a keyword from the list that does not exist$")
