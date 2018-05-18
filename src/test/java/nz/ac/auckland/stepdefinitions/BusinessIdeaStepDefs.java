@@ -3,6 +3,7 @@ package nz.ac.auckland.stepdefinitions;
 import java.util.ArrayList;
 import java.util.List;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -96,6 +97,48 @@ public class BusinessIdeaStepDefs {
 		for (int i = 0; i < newKeywords.size(); i++) {
 			assertThat(newKeywords.get(i), equalTo(_previousKeywords.get(i)));
 		}
+	}
+	
+	@When("^the User requests to add the keyword \"([^\"]*)\" to the list$")
+	public void the_User_requests_to_add_the_keyword_to_the_list(String arg1) throws Exception {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@Then("^the keyword list contains the keyword \"([^\"]*)\"$")
+	public void the_keyword_list_contains_the_keyword(String arg1) throws Exception {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@Then("^the keyword is not added to the list$")
+	public void the_keyword_is_not_added_to_the_list() throws Exception {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@When("^the User tries to remove keyword (\\d+) from the list$")
+	public void the_User_tries_to_remove_keyword_from_the_list(int arg1) throws Exception {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@Then("^keyword (\\d+) is removed from the list$")
+	public void keyword_is_removed_from_the_list(int arg1) throws Exception {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@Then("^all the keywords except keyword (\\d+) remain in the list$")
+	public void all_the_keywords_except_keyword_remain_in_the_list(int arg1) throws Exception {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@When("^the User tries to remove a keyword from the list that does not exist$")
+	public void the_User_tries_to_remove_a_keyword_from_the_list_that_does_not_exist() throws Exception {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
 	}
 	
 	private void initializeBusinessServiceWithMockKeywordExtractor() {
